@@ -8,13 +8,6 @@ config:
     users: ['nivSwisa1']
 
 automations:
-  assign_code_editors_org_level:
-      if:
-        - true
-      run:
-        - action: add-reviewers@v1
-          args:
-            reviewers: {{ calc.owners }}
   run_e2e_tests_org_level:
       if:
         - true
@@ -23,6 +16,4 @@ automations:
           args:
             comment: |
               'niv rules'
-calc:
-  owners: {{ repo | rankByGitBlame(gt=25) }}
 
